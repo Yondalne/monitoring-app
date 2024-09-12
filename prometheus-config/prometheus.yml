@@ -1,0 +1,19 @@
+global:
+  scrape_interval: 5s
+
+rule_files:
+  - "rules.yml"
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets:
+          - localhost:9090
+  - job_name: 'g-stock'
+    static_configs:
+      - targets:
+          - localhost:8000
+  - job_name: 'crm'
+    static_configs:
+      - targets:
+          - localhost:8001

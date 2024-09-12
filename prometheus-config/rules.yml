@@ -1,0 +1,36 @@
+groups:
+  - name: application_alerts
+    rules:
+      - alert: HighUsageCRM
+        expr: (crm_active_connections / crm_total_users) * 100 > 80
+        for: 1s
+        labels:
+          severity: warning
+        annotations:
+          summary: "High usage detected for CRM"
+          description: "The usage rate of G-Stock is above 80%"
+
+      - alert: HighUsageGStock
+        expr: (gstock_active_connections / gstock_total_users) * 100 > 80
+        for: 1s
+        labels:
+          severity: warning
+        annotations:
+          summary: "High usage detected for G-Stock"
+          description: "The usage rate of G-Stock is above 80%"
+      
+      - alert: ErrorRateCRM
+        expr: crm_error_rate_percentage * 100 >= 10
+        labels:
+          severity: warning
+        annotations:
+          summary: "High error rate detected on CRM"
+          description: "The Error Rate Reached 10% in CRM "
+      
+      - alert: ErrorRateGStock
+        expr: gstock_error_rate_percentage * 100 >= 10
+        labels:
+          severity: warning
+        annotations:
+          summary: "High error rate detected on CRM"
+          description: "The Error Rate Reached 10% in GStock "
