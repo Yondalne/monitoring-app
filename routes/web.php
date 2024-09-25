@@ -18,5 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/metrics', [MonitoringController::class, 'getMetrics']);
+Route::get('/metrics', [MonitoringController::class, 'fetchMetrics']);
 
